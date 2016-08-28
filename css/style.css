@@ -18,20 +18,32 @@ body, html, #map {
 .container {
   height: 100%;
   position: relative;
+  width: 100%;
 }
 
 input {
   font-size: 12px;
 }
 
-h1 {
-  color: #525454;
-  font-size: 22px;
-  margin: 0 0 10px 0;
-  text-align: center;
+.top-bar{
+  display:flex;
+  background-color: #000000;
 }
 
+.top-title {
+  color: #ffffff;
+  font-size: 30px;
+  margin: 0;
+  text-align: center;
+  width: 90%;
+  float: left;
+  padding: 35px 0 0 0;
+}
 
+.sideButton{
+  width:10%;
+  float:left;
+}
 hr {
   background: #D0D7D9;
   height: 1px;
