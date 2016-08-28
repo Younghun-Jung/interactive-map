@@ -1,0 +1,114 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body, html, #map {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map{
+  position: relative;
+  overflow: hidden;
+}
+.container {
+  height: 100%;
+  position: relative;
+}
+
+input {
+  font-size: 12px;
+}
+
+h1 {
+  color: #525454;
+  font-size: 22px;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+
+hr {
+  background: #D0D7D9;
+  height: 1px;
+  margin: 20px 0 20px 0;
+  border: none;
+}
+
+#map {
+  bottom:0px;
+  height: 100%;
+  left: 362px;
+  position: absolute;
+  right: 0px;
+}
+
+.slide-bar {
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 3px;
+  height: 100%;
+  line-height: 35px;
+  padding: 10px 10px 30px 10px;
+  text-align: left;
+  width: 362px;
+}
+
+#places-search,
+#search-within-time-text {
+  width: 84%;
+}
+
+.text {
+  font-size: 12px;
+}
+
+#toggle-drawing {
+  width: 27%;
+  position: relative;
+  margin-left: 10px;
+}
+
+#zoom-to-area-text {
+  width: 70%;
+}
+
+#zoom-to-area {
+  width: 24%;
+}
+
+.content_Title {
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+/* infoWindow style */
+.gm-style-iw {
+  width: 320px !important;
+  top: 0 !important;
+  left: 0 !important;
+  position: absolute;
+  overflow: hidden;
+  padding: 5px;
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+  border: 1px solid rgba(72, 181, 233, 0.6);
+  border-radius: 2px 2px 0 0;
+}
+
+#pano {
+  width: 300px;
+  height: 300px;
+  float: left;
+  padding: 5px;
+}
+
+.des {
+  float: left;
+  padding-bottom: 5px;
+  width: 300px;
+}
