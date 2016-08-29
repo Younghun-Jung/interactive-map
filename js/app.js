@@ -5,10 +5,6 @@ var infowindow;
 // These are the locations list that will be shown to the user.
 var locationList = [
 	{
-		title: 'Olympic_Park,Seoul',
-		location: {lat: 37.520934, lng: 127.121548}
-	},
-	{
 		title: 'N_Seoul_Tower',
 		location: {lat: 37.551374, lng: 126.988280}
 	},
@@ -27,6 +23,18 @@ var locationList = [
 	{
 		title: 'Gwangjang_Market',
 		location: {lat: 37.570096, lng: 126.999344}
+	},
+	{
+		title: 'Gyeongbokgung',
+		location: {lat: 37.579889, lng: 126.976987}
+	},
+	{
+		title: 'Cheonggyecheon',
+		location: {lat: 37.571238, lng: 127.024334} 
+	},
+	{
+		title: 'Gwanghwamun',
+		location: {lat: 37.577627, lng: 126.976944}
 	}
 ];
 
@@ -35,8 +43,8 @@ var locationList = [
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 37.551374, lng: 126.988280},
-		zoom: 15,
-		mapTypeControl: true
+		zoom: 13,
+		mapTypeControl: false
 	});
 	var defaultIcon = makeMarkerIcon('0091ff');
 	var highlightedIcon = makeMarkerIcon('FFFF24');
@@ -89,6 +97,14 @@ function initMap() {
 	    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
 	  });
 	};
+
+	// Slide bar button setting
+	$('.sideButton').on('click', function() {
+		$('.slide-bar').toggleClass('slide-out');
+		$('.top-bar').toggleClass('right-out');
+		$('#map').toggleClass('right-out');
+	});
+
 	// Execute knockout js
 	ko.applyBindings(ViewModel);
 	// Activate search filter

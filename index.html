@@ -3,32 +3,32 @@
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
     <title>Seoul Trip Map</title>
   </head>
   <body>
-    <div class="top-bar">
-      <div class="sideButton">
-        <img src="js/img/sidebar_btn.png">
-      </div>
-      <h1 class="top-title">Let's Do Seoul Trip</h1>
-    </div>
-
     <div class="container">
-      <div class="slide-bar">
+      <div class="top-bar">
+        <div class="sideButton">
+          <img src="js/img/sidebar_btn.png">
+        </div>
+        <h1 class="top-title">Let's Do Seoul Trip</h1>
+      </div>
+
+      <div class="slide-bar slide-out">
         <div class="searchDiv">
-          <input id="searchBox" placeholder="Search" type="search" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
+          <input id="searchBox" placeholder="Search.." type="search" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
         </div>
 
         <div class="dataList">
-          <ul data-bind="foreach: locations">
-            <li data-bind="text: title, click: $parent.locationClicked"></li>
-          </ul>
+          <div data-bind="foreach: locations">
+            <p data-bind="text: title, click: $parent.locationClicked"></p>
+          </div>
         </div>
       </div>
+
       <div id="map"></div>
     </div>
-
-
 
     <script src="js/lib/knockout-3.4.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

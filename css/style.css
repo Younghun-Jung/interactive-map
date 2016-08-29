@@ -11,23 +11,34 @@ body, html, #map {
   padding: 0;
 }
 
-#map{
-  position: relative;
-  overflow: hidden;
+#map {
+  bottom:0px;
+  height: 100%;
+  /*left: 35%;*/
+  width:100%;
+  position: absolute;
+  right: 0px;
+  z-index: 1;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
+
 .container {
   height: 100%;
-  position: relative;
   width: 100%;
+  position: relative;
+  overflow: auto;
+  display:flex;
 }
 
-input {
-  font-size: 12px;
-}
-
+/* Top bar */
 .top-bar{
   display:flex;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 10%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
 }
 
 .top-title {
@@ -37,60 +48,71 @@ input {
   text-align: center;
   width: 90%;
   float: left;
-  padding: 35px 0 0 0;
+  padding: 20px 0 0 0;
 }
 
 .sideButton{
-  width:10%;
+  min-width: 50px;
   float:left;
-}
-hr {
-  background: #D0D7D9;
-  height: 1px;
-  margin: 20px 0 20px 0;
-  border: none;
+  position: relative;
+  padding: 6px;
 }
 
-#map {
-  bottom:0px;
-  height: 100%;
-  left: 362px;
-  position: absolute;
-  right: 0px;
+.sideButton img{
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: auto;
 }
 
+/* Search box */
+.searchDiv {
+  margin-top: 5px;
+  margin-left: 3px;
+}
+
+input {
+  font-size: 20px;
+  width: 80%;
+}
+
+.dataList {
+  margin-left: 7px;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.dataList p:hover {
+  cursor: pointer;
+}
+
+/* Slide bar */
 .slide-bar {
-  background: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
   border: 1px solid #999;
   border-radius: 3px;
   height: 100%;
+  margin: 0;
   line-height: 35px;
   padding: 10px 10px 30px 10px;
   text-align: left;
-  width: 362px;
+  width: 25%;
+  z-index:2;
+  position: absolute;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-#places-search,
-#search-within-time-text {
-  width: 84%;
+.slide-bar.slide-out {
+  -webkit-transform: translate3d( -600px,0,0);
+  transform: translate3d( -600px,0,0); 
 }
 
-.text {
-  font-size: 12px;
-}
-
-#toggle-drawing {
-  width: 27%;
-  position: relative;
-  margin-left: 10px;
-}
-
-#zoom-to-area-text {
-  width: 70%;
-}
-
-#zoom-to-area {
-  width: 24%;
+.right-out{
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: translate3d( 25%,0,0);
+  transform: translate3d( 25%,0,0); 
 }
 
 .content_Title {
@@ -123,4 +145,33 @@ hr {
   float: left;
   padding-bottom: 5px;
   width: 300px;
+}
+
+@media screen and (max-width: 850px) {
+    h1 {
+        font-size: 1em;
+    }
+    
+    .dataList {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 1em;
+    }
+    
+    .slide-bar {
+      width: 50%;
+    }
+    .right-out{
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      -webkit-transform: translate3d( 50%,0,0);
+      transform: translate3d( 50%,0,0); 
+    }
+    .dataList {
+        font-size: 12px;
+    }
 }
