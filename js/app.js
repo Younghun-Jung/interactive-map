@@ -85,7 +85,7 @@ function initMap() {
 		// Remove background margin on infowindow
 		google.maps.event.addListener(infowindow, 'domready', function() {
 			// Reference to the DIV which receives the contents of the infowindow using jQuery
-   		var iwOuter = $('.gm-style-iw');
+   		var iwOuter = $('.gm-style-iw'); 
  	    /* The DIV we want to change is above the .gm-style-iw DIV.
 	    * So, we use jQuery and create a iwBackground variable,
 	    * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
@@ -179,7 +179,8 @@ var ViewModel = {
 		}
 
 		// Part of ajax for wiki URL
-		var wikiUrl = "https://en.wikipedia.org/w/api.php?callback=?&action=opensearch&limit=20&namespace=0&format=json&search=" + requestedLoc;
+		var wikiUrl = "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + requestedLoc +
+                    "&format=json&callback=?";
 
 		$.ajax({
 			url: wikiUrl,
