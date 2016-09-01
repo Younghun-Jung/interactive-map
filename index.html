@@ -16,13 +16,14 @@
       </div>
 
       <div class="slide-bar slide-out">
+<!--
         <div class="searchDiv">
           <input id="searchBox" placeholder="Search.." type="search" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
         </div>
-
+-->
         <div class="dataList">
           <div data-bind="foreach: locations">
-            <p data-bind="text: title, click: $parent.locationClicked"></p>
+            <p data-bind="text: title, click: $parent.listClicked"></p>
           </div>
         </div>
       </div>

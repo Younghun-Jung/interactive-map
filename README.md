@@ -12,7 +12,7 @@ There is a search box above the map.
 1. Google maps API
 2. Wikipedia API
 3. Ajax request (JSON)
-4. Js libraries - JQuery, KnockoutJS 
+4. Js libraries - JQuery, KnockoutJS
 5. CSS
 6. HTML
 
@@ -20,13 +20,13 @@ There is a search box above the map.
 
 30/08/2016
 
-# Instructions 
+# Instructions
 
 1. Open index.html in a web browser.
-2. By clicking on one of the markers - the marker will start bouncing and an info window will open. 
+2. By clicking on one of the markers - the marker will start bouncing and an info window will open.
 3. Check information(wiki, street view) of specific location
 4. By clicking on another marker, the current info window will close and a new info window will open.
-5. Every info window includes - 
+5. Every info window includes -
 		1. The name of the location.(includeing wiki link)
 		2. A description about the location.
 		3. Street view panorama
@@ -35,3 +35,7 @@ There is a search box above the map.
 		2. By clicking again the menu will close.
 7. Clicking on any location on the menu will open the info window of this location and the marker will start bouncing.
 8. Above the map there is a search box - every search in this box will filter the locations in the menu and the marker on the map according to the search.
+
+# Reference
+Zoom correct:
+http://stackoverflow.com/questions/2437683/google-maps-api-v3-can-i-setzoom-after-fitbounds
