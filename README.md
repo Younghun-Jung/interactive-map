@@ -1,4 +1,4 @@
-1. Introduction
+# Introduction
 
 Git hub here - https://github.com/Younghun-Jung/interactive-map </br>
 
@@ -7,7 +7,7 @@ This displays several popular locations for Seoul travel</br>
 User can click on every marker to get more information for each location. </br>
 There is a side menu bar on the left side of the app. </br>
 
-2. How to use this app?
+# How to use this app?
 
 - Download this app from github above
 - Open index.html on your browser
@@ -16,7 +16,7 @@ There is a side menu bar on the left side of the app. </br>
 - Type keyword for search locations on side-bar list
 - Click bound button to check where specific locations are
 
-3. Technologies used on this app
+# Technologies used on this app
 
 - Google maps API
 - Wikipedia API
@@ -25,7 +25,7 @@ There is a side menu bar on the left side of the app. </br>
 - CSS
 - HTML
 
-4. Reference
+# Reference
 Google Maps API:
 Google Map API on Udacity course,
 https://developers.google.com/maps/documentation/javascript/tutorial
