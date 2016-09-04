@@ -187,7 +187,7 @@ var ViewModel = function(markersArray) {
 		// Marker's title which is needed to display information
 		var loc = marker.title;
 		// Wiki URL for request
-		var wikiURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + loc + '&format=json';
+		var wikiURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + loc + '&format=json&callback=wikiCallback';
 		// Set fail message if wiki request fails
 		var wikiRequestTimeout = setTimeout(function() {
 			infowindow.setContent("<div>Fail to get wikipedia resources</div>");
