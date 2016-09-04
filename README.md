@@ -15,9 +15,11 @@ There is a side menu bar on the left side of the app. </br>
 - Download this app from github above
 - Open index.html on your browser
 - Click on marker that you want to get information
-- You can display side bar includes locations list on top-left of this app
+- You can check wikipedia information of location if you click 'link' on information window
+- You can see side bar includes locations list on top-left of this app
 - Type keyword for search locations on side-bar list
 - Click bound button to check where specific locations are
+
 
 ## Technologies used on this app
 
