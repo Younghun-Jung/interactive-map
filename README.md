@@ -51,6 +51,7 @@ http://secr.tistory.com/94</br>
 http://www.w3schools.com/css/css3_buttons.asp</br>
 - Wiki URL API Ajax:</br>
 Wikipedia API part on Udacity course,</br>
+http://api.jquery.com/jquery.ajax/</br>
 - Customize Infowindow style:</br>
 http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html
 
