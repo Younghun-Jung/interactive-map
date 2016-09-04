@@ -4,23 +4,26 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0">
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+    <script src="js/lib/knockout-3.4.0.js"></script>
     <title>Seoul Trip Map</title>
   </head>
   <body>
     <div class="container">
       <div class="top-bar">
-        <div class="sideButton">
+        <div class="slideButton">
           <img src="js/img/sidebar_btn.png">
         </div>
         <h1 class="top-title">Let's Do Seoul Trip</h1>
       </div>
 
-      <div class="slide-bar slide-out">
-<!--
+      <div class="slideBar slide-out">
+
         <div class="searchDiv">
-          <input id="searchBox" placeholder="Search.." type="search" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
+          <input id="searchBox" placeholder="Search.." type="search" data-bind="value: keyword, valueUpdate: 'keyup'">
+          <button id="bounceBotton" type="button">Bounce</button>
         </div>
--->
+
         <div class="dataList">
           <div data-bind="foreach: locations">
             <p data-bind="text: title, click: $parent.listClicked"></p>
@@ -31,7 +34,6 @@
       <div id="map"></div>
     </div>
 
-    <script src="js/lib/knockout-3.4.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/app.js"></script>
     <script async defer

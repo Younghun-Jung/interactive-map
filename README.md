@@ -1,41 +1,53 @@
-# General
+1. Introduction
 
 Git hub here - https://github.com/Younghun-Jung/interactive-map </br>
 
-This app displays several popular locations for Seoul travel</br>
-It is possible to click on every marker to get more information for each location. </br>
-There is a menu on the left side of the app. </br>
-There is a search box above the map.
+This Web application is made for people to want get information of Seoul trip.</br>
+This displays several popular locations for Seoul travel</br>
+User can click on every marker to get more information for each location. </br>
+There is a side menu bar on the left side of the app. </br>
 
-# This app was developed using the folowing technologies
+2. How to use this app?
 
-1. Google maps API
-2. Wikipedia API
-3. Ajax request (JSON)
-4. Js libraries - JQuery, KnockoutJS
-5. CSS
-6. HTML
+- Download this app from github above
+- Open index.html on your browser
+- Click on marker that you want to get information
+- You can display side bar includes locations list on top-left of this app
+- Type keyword for search locations on side-bar list
+- Click bound button to check where specific locations are
 
-# Last update date
+3. Technologies used on this app
 
-30/08/2016
+- Google maps API
+- Wikipedia API
+- Ajax request (JSON)
+- Js libraries - JQuery, KnockoutJS
+- CSS
+- HTML
 
-# Instructions
+4. Reference
+Google Maps API:
+Google Map API on Udacity course,
+https://developers.google.com/maps/documentation/javascript/tutorial
 
-1. Open index.html in a web browser.
-2. By clicking on one of the markers - the marker will start bouncing and an info window will open.
-3. Check information(wiki, street view) of specific location
-4. By clicking on another marker, the current info window will close and a new info window will open.
-5. Every info window includes -
-		1. The name of the location.(includeing wiki link)
-		2. A description about the location.
-		3. Street view panorama
-6. On the upper left side there is a menu bar -  
-		1. By clicking on it the menu will open.
-		2. By clicking again the menu will close.
-7. Clicking on any location on the menu will open the info window of this location and the marker will start bouncing.
-8. Above the map there is a search box - every search in this box will filter the locations in the menu and the marker on the map according to the search.
-
-# Reference
 Zoom correct:
 http://stackoverflow.com/questions/2437683/google-maps-api-v3-can-i-setzoom-after-fitbounds
+Value Binding:
+http://knockoutjs.com/documentation/value-binding.html
+Google Maps API > Maps JavaScript API:
+https://developers.google.com/maps/documentation/javascript/events?hl=ko
+Explicitly subscribing to observables:
+http://knockoutjs.com/documentation/observables.html
+JavaScript indexOf() function; Search character:
+http://webisfree.com/blog/?titlequery=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%B0%B0%EC%97%B4-%EB%98%90%EB%8A%94-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%90-indexof-%EC%82%AC%EC%9A%A9%ED%95%9C-%ED%8A%B9%EC%A0%95-%EB%AC%B8%EC%9E%90-%EA%B2%80%EC%83%89
+Marker Bounce Animation:
+http://secr.tistory.com/94
+CSS Button style:
+http://www.w3schools.com/css/css3_buttons.asp
+Wiki URL API Ajax:
+Wikipedia API part on Udacity course
+Customize Infowindow style:
+http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html
+
+# Future Works
+Display location's thumbnail of wikipage by using API
