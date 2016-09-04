@@ -1,4 +1,7 @@
-# Introduction
+# Project Details
+</br>
+
+## Introduction
 
 Git hub here - https://github.com/Younghun-Jung/interactive-map </br>
 
@@ -7,7 +10,7 @@ This displays several popular locations for Seoul travel</br>
 User can click on every marker to get more information for each location. </br>
 There is a side menu bar on the left side of the app. </br>
 
-# How to use this app?
+## How to use this app?
 
 - Download this app from github above
 - Open index.html on your browser
@@ -16,7 +19,7 @@ There is a side menu bar on the left side of the app. </br>
 - Type keyword for search locations on side-bar list
 - Click bound button to check where specific locations are
 
-# Technologies used on this app
+## Technologies used on this app
 
 - Google maps API
 - Wikipedia API
@@ -25,28 +28,28 @@ There is a side menu bar on the left side of the app. </br>
 - CSS
 - HTML
 
-# Reference
-Google Maps API:
+## Reference
+Google Maps API:</br>
 Google Map API on Udacity course,
 https://developers.google.com/maps/documentation/javascript/tutorial
 
-Zoom correct:
+Zoom correct:</br>
 http://stackoverflow.com/questions/2437683/google-maps-api-v3-can-i-setzoom-after-fitbounds
-Value Binding:
+Value Binding:</br>
 http://knockoutjs.com/documentation/value-binding.html
-Google Maps API > Maps JavaScript API:
+Google Maps API > Maps JavaScript API:</br>
 https://developers.google.com/maps/documentation/javascript/events?hl=ko
-Explicitly subscribing to observables:
+Explicitly subscribing to observables:</br>
 http://knockoutjs.com/documentation/observables.html
-JavaScript indexOf() function; Search character:
+JavaScript indexOf() function; Search character:</br>
 http://webisfree.com/blog/?titlequery=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%B0%B0%EC%97%B4-%EB%98%90%EB%8A%94-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%90-indexof-%EC%82%AC%EC%9A%A9%ED%95%9C-%ED%8A%B9%EC%A0%95-%EB%AC%B8%EC%9E%90-%EA%B2%80%EC%83%89
-Marker Bounce Animation:
+Marker Bounce Animation:</br>
 http://secr.tistory.com/94
-CSS Button style:
+CSS Button style:</br>
 http://www.w3schools.com/css/css3_buttons.asp
-Wiki URL API Ajax:
+Wiki URL API Ajax:</br>
 Wikipedia API part on Udacity course
-Customize Infowindow style:
+Customize Infowindow style:</br>
 http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html
 
 # Future Works
