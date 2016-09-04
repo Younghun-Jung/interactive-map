@@ -200,7 +200,7 @@ var ViewModel = function(markersArray) {
 		}).done(function(response) {
 			/* Check contents in response array
 			//for(var i=0; i<response.length; i++) {console.log("res"+[i]+" : "+response[i]);console.log(response[3][0]);}
-			// response[0]: location title, response[1]: location title(none underbar),
+			// response[0]: location title, response[1]: location title(of wiki),
 			// response[2]: description, response[3][0]: wiki URL for location
 			// response[1], response[3] have two-dimensionaly array such as 'Insa-dong'
 			*/
@@ -217,6 +217,7 @@ var ViewModel = function(markersArray) {
 														"<div class='contentDes'><p>" + description + "</p></div>"
 													 );
 			infowindow.open(map, marker);
+
 			// Error handling with JSON P
 			clearTimeout(wikiRequestTimeout);
 		});
@@ -233,7 +234,7 @@ var ViewModel = function(markersArray) {
 				break;
 			}
 		}
-		// Set bounce and Display information of location which is clicked on list
+		// Set bounce motion and Display information of location which is clicked on list
 		setBounce(self.markers[index], 1.5);
 		self.displayInfo(self.markers[index]);
 	};
@@ -253,10 +254,12 @@ var ViewModel = function(markersArray) {
 				self.locations.push(locationList[i]);
 			}
 		}
-		// If user clicks bounce button, marekr(s) on list is/are bounced
+		// Instead of removing markers which are displayed on list,
+		// Marker(s) on list is/are bounced, if user clicks bounce button,
 		$('#bounceBotton').on('click', function() {
 			//console.log('bounce button');
-			// Fined filtered locations of list that matched with all markers
+			// Find filtered locations of list that matched with all markers
+			// ex) Typing keyword 'seoul' and click bounce button.
 			for (var i=0; i<self.locations().length; i++) {
 				for (var j=0; j<self.markers.length; j++) {
 					if (self.locations()[i].title === self.markers[j].title) {
