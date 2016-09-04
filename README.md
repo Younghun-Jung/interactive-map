@@ -43,6 +43,11 @@ http://knockoutjs.com/documentation/value-binding.html</br>
 https://developers.google.com/maps/documentation/javascript/events?hl=ko</br>
 - Explicitly subscribing to observables:</br>
 http://knockoutjs.com/documentation/observables.html</br>
+- Data-binding</br>
+http://knockoutjs.com/documentation/foreach-binding.html</br>
+http://knockoutjs.com/documentation/text-binding.html</br>
+http://knockoutjs.com/documentation/click-binding.html</br>
+JavaScript Design Pattern on Udacity course</br>
 - JavaScript indexOf() function; Search character:</br>
 http://webisfree.com/blog/?titlequery=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%B0%B0%EC%97%B4-%EB%98%90%EB%8A%94-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%90-indexof-%EC%82%AC%EC%9A%A9%ED%95%9C-%ED%8A%B9%EC%A0%95-%EB%AC%B8%EC%9E%90-%EA%B2%80%EC%83%89</br>
 - Marker Bounce Animation:</br>
