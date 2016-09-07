@@ -154,7 +154,7 @@ function slideBar() {
 		$('.slideBar').toggleClass('slide-out');
 		$('.top-bar').toggleClass('right-out');
 		//$('#map').toggleClass('right-out');
-	})
+	});
 }
 
 // Function for set Bounce on marker
@@ -249,9 +249,13 @@ var ViewModel = function(markersArray) {
 		self.locations([]);
 		// Filtering locations that matched with keyword from user
 		for (var i=0; i<locationList.length; i++) {
+			// All markers are setVisible to false
+			self.markers[i].setVisible(false);
 			if(locationList[i].title.toLowerCase().indexOf(key.toLowerCase()) >= 0) {
 				// Push location(s) object into locations array
 				self.locations.push(locationList[i]);
+				// Only filtered markers are set visible
+				self.markers[i].setVisible(true);
 			}
 		}
 		// Instead of removing markers which are displayed on list,
