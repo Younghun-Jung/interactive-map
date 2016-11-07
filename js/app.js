@@ -54,32 +54,24 @@ var locationList = [
 	}
 ];
 
-
-
-
 // Initialization the google map and several functions
+
 function initMap() {
-	// Create new map
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 37.551374, lng: 126.988280},
-		zoom: 14,
+		zoom: 13,
 		mapTypeControl: false
 	});
-
-	// Setting marker Icon
 	var defaultIcon = makeMarkerIcon('0091ff');
 	var highlightedIcon = makeMarkerIcon('FFFF24');
-
-	// Setting Infowindow style
-	infowindow = new google.maps.InfoWindow();
+	infowindow = new google.maps.InfoWindow({
+		content: '<div class="content"></div>'
+	});
 
 	// The locationList array is applied to create an array of markers on initialization
-	for (var i = 0; i < locationList.length; i++){
-		// Assign position and title of all locations into variabels
+	for (var i = 0; i < ViewModel.locations().length; i++){
 		var position = locationList[i].location;
 		var title = locationList[i].title;
-
-		// Create new markers for all locations
 		var marker = new google.maps.Marker({
 			map: map,
 			animation: google.maps.Animation.DROP,
@@ -88,198 +80,194 @@ function initMap() {
 			id: i,
 			icon: defaultIcon
 		});
-
 		// Push the marekr to array of markers
 		markers.push(marker);
 
-		// Marker's color change
+		// Execute function for showing markers on map
+		showMarkers();
+
+		// Create an onclick event to open the large infowindow at each marker
+		marker.addListener('click', function() {
+			ViewModel.showMarkerInfo(this, infowindow);
+		});
+
 		marker.addListener('mouseover', function() {
 			this.setIcon(highlightedIcon);
 		});
 		marker.addListener('mouseout', function() {
 			this.setIcon(defaultIcon);
 		});
+
+		// Remove background margin on infowindow
+		google.maps.event.addListener(infowindow, 'domready', function() {
+			// Reference to the DIV which receives the contents of the infowindow using jQuery
+   		var iwOuter = $('.gm-style-iw');
+ 	    /* The DIV we want to change is above the .gm-style-iw DIV.
+	    * So, we use jQuery and create a iwBackground variable,
+	    * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+	    */
+	    var iwBackground = iwOuter.prev();
+	    // Remove the background shadow DIV
+	    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+	    // Remove the white background DIV
+	    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+	  });
 	};
 
-	// Binding View model by passing markers array
-	ko.applyBindings(new ViewModel(markers));
+	// Slide bar button setting
+	$('.sideButton').on('click', function() {
+		$('.slide-bar').toggleClass('slide-out');
+		$('.top-bar').toggleClass('right-out');
+		$('#map').toggleClass('right-out');
+	});
 
-	// Remove background margin on infowindow
-	google.maps.event.addListener(infowindow, 'domready', function() {
-		// Reference to the DIV which receives the contents of the infowindow using jQuery
- 		var iwOuter = $('.gm-style-iw');
-    var iwBackground = iwOuter.prev();
-    // Remove the background shadow DIV
-    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-    // Remove the white background DIV
-    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-  });
+	// Execute knockout js
+	ko.applyBindings(ViewModel);
+	// Activate search filter
+	ViewModel.query.subscribe(ViewModel.search);
+}
 
-	// Extend the boundaries of the map for each marker, display the marker and correct zoom value
+// Make marker Icon
+function makeMarkerIcon(markerColor) {
+	var markerImage = new google.maps.MarkerImage(
+		'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
+		'|40|_|%E2%80%A2',
+		new google.maps.Size(21, 34),
+		new google.maps.Point(0, 0),
+		new google.maps.Point(10, 34),
+		new google.maps.Size(21,34));
+	return markerImage;
+}
+
+// Function for show markers on map
+function showMarkers() {
 	var bounds = new google.maps.LatLngBounds();
+
+	// Extend the boundaries of the map for each marker and display the marker
 	for (var i = 0; i < markers.length; i++) {
 		markers[i].setMap(map);
 		bounds.extend(markers[i].position);
 	}
 	map.fitBounds(bounds);
-	var listener = google.maps.event.addListener(map, "idle", function() {
-		if(map.getZoom() > 13) {
-			map.setZoom(13);
-			google.maps.event.removeListener(listener);
-		}
-	});
-
-	// Function for Marker Icon setting
-	function makeMarkerIcon(markerColor) {
-		var markerImage = new google.maps.MarkerImage(
-			'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
-			'|40|_|%E2%80%A2',
-			new google.maps.Size(21, 34),
-			new google.maps.Point(0, 0),
-			new google.maps.Point(10, 34),
-			new google.maps.Size(21,34));
-		return markerImage;
-	}
-
-	//Set slide in/out on top-bar and menu
-	slideBar();
 }
 
-
-
-
-// Function for slideBar animation
-function slideBar() {
-	$('.slideButton').on('click', function() {
-		$('.slideBar').toggleClass('slide-out');
-		$('.top-bar').toggleClass('right-out');
-		//$('#map').toggleClass('right-out');
-	});
-}
-
-// Function for set Bounce on marker
-function setBounce(marker, minute) {
-	marker.setAnimation(google.maps.Animation.BOUNCE);
-	window.setTimeout(function () {
+// Bouncing Marker which are clicked
+function markerBounce(marker) {
+	if(marker.getAnimation() != null) {
 		marker.setAnimation(null);
-	}, minute * 1000)
+	} else {
+		marker.setAnimation(google.maps.Animation.BOUNCE);
+		window.setTimeout(function() {
+			marker.setAnimation(null);
+		}, 1500);
+	}
 }
 
 
 
+// MVVM pattern by using Knockout js
+var ViewModel = {
+	locations: ko.observableArray(locationList),
 
-// MVVM patter View Model for interaction
-var ViewModel = function(markersArray) {
-	// Create variable 'self' for different function scope
-	var self = this;
+	locationClicked: function(loc) {
+		var index;
+		for (var i=0; i< locationList.length; i++) {
+			if (locationList[i].title === loc.title) {
+				index = i;
+			}
+		}
+		console.log("index: " + index);
+		ViewModel.showMarkerInfo(markers[index], infowindow);
+	},
 
-	// Assign parameter into variable for ViewModel function
-	this.markers = markersArray;
+	showMarkerInfo: function(marker, infowindow) {
+		markerBounce(marker);
+		infowindow.open(map, marker);
 
-	// Assign locationList to locations which is knockout js func
-	this.locations = ko.observableArray(locationList);
+		var contentHTML;
+		var panoHTML = '<div id="pano"></div>';
 
-	// Display information for specific marker (which is clicked)
-	this.displayInfo = function(marker) {
-		console.log("title: " + marker.title + " id: " + marker.id);
+		var requestedLoc;
+		for (var i = 0; i < locationList.length; i++) {
+			if (marker.position.lat().toFixed(5) == locationList[i].location.lat.toFixed(5) && marker.position.lng().toFixed(5) == locationList[i].location.lng.toFixed(5)){
+				requestedLoc = locationList[i].title;
+			}
+		}
 
-		// Using Wikipedia AJAX reques
-		// Marker's title which is needed to display information
-		var loc = marker.title;
-		// Wiki URL for request
-		var wikiURL = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + loc + '&format=json&callback=wikiCallback';
-		// Set fail message if wiki request fails
-		var wikiRequestTimeout = setTimeout(function() {
-			infowindow.setContent("<div>Fail to get wikipedia resources</div>");
-			infowindow.open(map, marker);
-		}, 8000);
+		// Part of ajax for wiki URL
+		var wikiUrl = "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + requestedLoc +
+                    "&format=json&callback=?";
 
 		$.ajax({
-			url: wikiURL,
-			dataType: "jsonp"
-		}).done(function(response) {
-			/* Check contents in response array
-			//for(var i=0; i<response.length; i++) {console.log("res"+[i]+" : "+response[i]);console.log(response[3][0]);}
-			// response[0]: location title, response[1]: location title(of wiki),
-			// response[2]: description, response[3][0]: wiki URL for location
-			// response[1], response[3] have two-dimensionaly array such as 'Insa-dong'
-			*/
+			url: wikiUrl,
+			dataType: "jsonp",
+			success: function(response) {
+				console.log("$.ajax func");
+				// Choose the first argument of obj in response from Wiki
+				var articleList = response[1][0]; // Location name in wiki
+				var desList = response[2][0]; // Description for location
+				var url = response[3][0]; // Wiki url for location
+				var wikiContent = $('.content');
 
-			// Location name on wiki
-			var name = response[1][0];
-			// Description for loccation on wiki
-			var description = response[2];
-			// Link URL to wiki page
-			var linkURL = response[3][0];
-			// Insert contents from wiki on infowindow
-			infowindow.setContent("<div class='contentName'>" + name + "</div>" +
-														"<div class='contentLink'><a target='_blank' href='" + linkURL + "'>link</a>"+ "</div>" +
-														"<div class='contentDes'><p>" + description + "</p></div>"
-													 );
-			infowindow.open(map, marker);
+				contentHTML = '<a href=' + url + ' target="_blank"><h3 class="content_Title">'+ articleList + '</h3></a><div class="des">' + desList + '</div>';
+				$('.content').html(contentHTML);
 
-			// Error handling with JSON P
-			clearTimeout(wikiRequestTimeout);
-		});
-	};
+				// 이렇게 명시적으로 해야 순서대로 실행 됨
+				contentHTML = contentHTML + panoHTML;
+				var streetViewService = new google.maps.StreetViewService();
+				radius = 50;
+				streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
+			}
+		}).fail(function() {
+			$('.content').html("Fail to load content");
+		})
 
-	// Define function if title on list is clicked
-	this.listClicked = function(loc) {
-		var index;
-		console.log("clicked location on list: " + loc.title);
-		// Find specific location which is matched with marker's title
-		for(var i = 0; i<self.markers.length; i++) {
-			if(self.markers[i].title === loc.title) {
-				index = i;
-				break;
+		function getStreetView(data, status) {
+			console.log("contentHTML: " + contentHTML);
+			if (status == google.maps.StreetViewStatus.OK) {
+				console.log("getStreetView func");
+				var nearStreetViewLocation = data.location.latLng;
+				var heading = google.maps.geometry.spherical.computeHeading(
+					nearStreetViewLocation, marker.position);
+
+					infowindow.setContent(contentHTML);
+					console.log(contentHTML);
+					var panoramaOptions = {
+						position: nearStreetViewLocation,
+						pov: {
+							heading: heading,
+							pitch: 30
+						}
+					};
+				var panorama = new google.maps.StreetViewPanorama(
+					document.getElementById('pano'), panoramaOptions);
+			} else {
+				console.log("fail street view");
+				infowindow.setContent(contentHTML);
+				//$('#pano').html('No Street Veiw');
+				$('#pano').html('<img src="js/img/no-image.jpg" width="300px" height="300px">');
+				console.log(contentHTML);
 			}
 		}
-		// Set bounce motion and Display information of location which is clicked on list
-		setBounce(self.markers[index], 1.5);
-		self.displayInfo(self.markers[index]);
-	};
-
-	// Search Keyword, that user wants to get information, value binding
-	// Initially blank keyword
-	this.keyword = ko.observable('');
-	// Set filter function based on user's keyword; callback that is called
-	// whenever the notification happens
-	this.keyword.subscribe(function(key) {
-		// Initialize locations array for filtered keyword from user
-		self.locations([]);
-		// Filtering locations that matched with keyword from user
-		for (var i=0; i<locationList.length; i++) {
-			// All markers are setVisible to false
-			self.markers[i].setVisible(false);
-			if(locationList[i].title.toLowerCase().indexOf(key.toLowerCase()) >= 0) {
-				// Push location(s) object into locations array
-				self.locations.push(locationList[i]);
-				// Only filtered markers are set visible
-				self.markers[i].setVisible(true);
+		/* 여기에 선언하게 되면 $.ajax를 먼저 실행함에도 불구하고 아래가 먼저 실행됨
+		var streetViewService = new google.maps.StreetViewService();
+		radius = 50;
+		streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
+		*/
+	},
+	// Search Filter part
+	query: ko.observable(''),
+	search: function(value){
+		console.log("val : " + value);
+		ViewModel.locations([]);
+		for (var i=0; i<markers.length; i++) {
+			markers[i].setMap(null);
+		}
+		for (var a in locationList) {
+			if (locationList[a].title.toLowerCase().indexOf(value.toLowerCase()) >=0) {
+				ViewModel.locations.push(locationList[a]);
+				markers[a].setMap(map);
 			}
 		}
-		// Instead of removing markers which are displayed on list,
-		// Marker(s) on list is/are bounced, if user clicks bounce button,
-		$('#bounceBotton').on('click', function() {
-			//console.log('bounce button');
-			// Find filtered locations of list that matched with all markers
-			// ex) Typing keyword 'seoul' and click bounce button.
-			for (var i=0; i<self.locations().length; i++) {
-				for (var j=0; j<self.markers.length; j++) {
-					if (self.locations()[i].title === self.markers[j].title) {
-						// Set bounce motion on filtered marker(s)
-						setBounce(self.markers[j], 1.5);
-					}
-				}
-			}
-		})
-	});
-
-	// Setting listener on marker
-	for(var i=0; i< this.markers.length; i++){
-		self.markers[i].addListener('click', function() {
-			setBounce(this, 1.5);
-			self.displayInfo(this);
-		})
 	}
 }

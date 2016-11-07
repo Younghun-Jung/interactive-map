@@ -51,14 +51,14 @@ body, html, #map {
   padding: 20px 0 0 0;
 }
 
-.slideButton{
+.sideButton{
   min-width: 50px;
   float:left;
   position: relative;
   padding: 6px;
 }
 
-.slideButton img{
+.sideButton img{
   width: 50px;
   height: 50px;
   display: block;
@@ -73,7 +73,7 @@ body, html, #map {
 
 input {
   font-size: 20px;
-  width: 70%;
+  width: 80%;
 }
 
 .dataList {
@@ -87,7 +87,7 @@ input {
 }
 
 /* Slide bar */
-.slideBar {
+.slide-bar {
   background-color: rgba(0, 0, 0, 0.7);
   border: 1px solid #999;
   border-radius: 3px;
@@ -103,16 +103,16 @@ input {
   transition: 0.5s;
 }
 
-.slideBar.slide-out {
+.slide-bar.slide-out {
   -webkit-transform: translate3d( -600px,0,0);
-  transform: translate3d( -600px,0,0);
+  transform: translate3d( -600px,0,0); 
 }
 
 .right-out{
   -webkit-transition: 0.5s;
   transition: 0.5s;
   -webkit-transform: translate3d( 25%,0,0);
-  transform: translate3d( 25%,0,0);
+  transform: translate3d( 25%,0,0); 
 }
 
 .content_Title {
@@ -120,18 +120,6 @@ input {
   margin: 5px 0;
 }
 
-#bounceBotton{
-  background-color: #e7e7e7;
-  color: black;
-  border-radius: 5px;
-  font-size: 12px;
-  transition-duration: 0.4s;
-}
-
-#bounceBotton:hover {
-  background-color: #ffffff;
-  cursor: pointer;
-}
 /* infoWindow style */
 .gm-style-iw {
   width: 320px !important;
@@ -146,37 +134,24 @@ input {
   border-radius: 2px 2px 0 0;
 }
 
-/*
 #pano {
   width: 300px;
   height: 300px;
   float: left;
   padding: 5px;
 }
-*/
 
-.contentName {
+.des {
   float: left;
-  font-size: 15px;
-  font-weight: bold;
-  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 300px;
 }
 
-.contentLink {
-  float: right;
-}
-
-.contentDes {
-  float: left;
-  padding-bottom: 2px;
-}
-
-/* responsive style*/
 @media screen and (max-width: 850px) {
     h1 {
         font-size: 1em;
     }
-
+    
     .dataList {
         font-size: 12px;
     }
@@ -186,15 +161,15 @@ input {
     h1 {
         font-size: 1em;
     }
-
-    .slidebar {
+    
+    .slide-bar {
       width: 50%;
     }
     .right-out{
       -webkit-transition: 0.5s;
       transition: 0.5s;
       -webkit-transform: translate3d( 50%,0,0);
-      transform: translate3d( 50%,0,0);
+      transform: translate3d( 50%,0,0); 
     }
     .dataList {
         font-size: 12px;

@@ -5,30 +5,36 @@
 
 Git hub here - https://github.com/Younghun-Jung/interactive-map </br>
 
-This Web application is made for people to want get information of Seoul trip.</br>
-This displays several popular locations for Seoul travel</br>
-User can click on every marker to get more information for each location. </br>
-There is a side menu bar on the left side of the app. </br>
+This app displays several popular locations for Seoul trip</br>
+It is possible to click on every marker to get more information for each location. </br>
+There is a menu on the left side of the app. </br>
+There is a search box above the map.
+
+## This app was developed using the following technologies
+
+1. Google maps API
+2. Wikipedia API
+3. Ajax request (JSON)
+4. Js libraries - JQuery, KnockoutJS
+5. CSS
+6. HTML
+
 
 ## How to use this app?
 
-- Download this app from github above
-- Open index.html on your browser
-- Click on marker that you want to get information
-- You can check wikipedia information of location if you click 'link' on information window
-- You can see side bar includes locations list on top-left of this app
-- Type keyword for search locations on side-bar list
-- Click bound button to check where specific locations are
-
-
-## Technologies used on this app
-
-- Google maps API
-- Wikipedia API
-- Ajax request (JSON)
-- Js libraries - JQuery, KnockoutJS
-- CSS
-- HTML
+1. Open index.html in a web browser.
+2. By clicking on one of the markers - the marker will start bouncing and an info window will open.
+3. Check information(wiki, street view) of specific location
+4. By clicking on another marker, the current info window will close and a new info window will open.
+5. Every info window includes -
+		1. The name of the location.(includeing wiki link)
+		2. A description about the location.
+		3. Street view panorama
+6. On the upper left side there is a menu bar -  
+		1. By clicking on it the menu will open.
+		2. By clicking again the menu will close.
+7. Clicking on any location on the menu will open the info window of this location and the marker will start bouncing.
+8. Above the map there is a search box - every search in this box will filter the locations in the menu and the marker on the map according to the search.
 
 ## Reference
 - Google Maps API:</br>
@@ -59,8 +65,3 @@ Wikipedia API part on Udacity course,</br>
 http://api.jquery.com/jquery.ajax/</br>
 - Customize Infowindow style:</br>
 http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html
-
-## Future Works
-- Display location's thumbnail of wikipage by using API
-- Add street panorama view on each locations
-- Add information for route between user's location and destination
